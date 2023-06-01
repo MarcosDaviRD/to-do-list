@@ -8,7 +8,8 @@ function verificaoInputVazio() {
     // Se for vázio ele não permite que o valor seja enviado, ou seja, aciona a função da linha '27'.
     let tarefa = document.getElementById("input-task");
     tarefa.classList.add("placeholder");
-    tarefa = document.getElementById("input-task").placeholder = "Campo vázio, adicione uma tarefa...";
+    tarefa = document.getElementById("input-task").placeholder =
+      "Campo vázio, adicione uma tarefa...";
   }
   setTimeout(() => {
     if (lengthString.length == 0) {
@@ -81,7 +82,6 @@ function criarElementos() {
     imgEditar.setAttribute("src", "assets/editar_preto.png");
     imgExcluir.setAttribute("src", "/assets/excluir.svg");
     p.textContent = tarefa.value;
-    p.classList.add("text__center");
 
     // Seção 3' - Anexando Elementos dentro de algum Elemento em HTML.
     div.appendChild(imgEditar);
@@ -132,14 +132,18 @@ function criarElementos() {
         imgConcluir.setAttribute("src", "");
         imgEditar.style.display = "none";
         editarListacomInput.style.display = "block";
-        p.textContent = "";
         editarListacomInput.value = "";
+        p.style.display = "none"
+        p.textContent = ""
+        return
       } else {
+        p.style.display = "block"
         editarListacomInput.style.display = "none";
         imgEditar.setAttribute("src", "assets/editar_preto.png");
         imgConcluir.setAttribute("src", "/assets/confirmar.svg");
         p.classList.remove("decorationConcluido");
         p.textContent = editarListacomInput.value;
+        return
       }
     }
 
