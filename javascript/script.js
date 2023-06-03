@@ -1,6 +1,9 @@
 let tarefa = document.getElementById("input-task");
+let containerPrincipal = document.getElementById("container");
+
 const botao = document.getElementById("addtask");
 lengthString = tarefa.value;
+
 function verificaoInputVazio() {
   // Função que verifica se o valor do Input é vázio
   lengthString = tarefa.value;
@@ -69,19 +72,29 @@ function criarElementos() {
     const div = document.createElement("div");
     const editarListacomInput = document.createElement("input");
     const inputCheckbox = document.createElement("input");
+    let alertaExcluir = document.createElement("div");
+    let ul_div_excluir = document.createElement("ul");
+    let lista1_excluir = document.createElement("li");
+    let lista2_excluir = document.createElement("li");
+    let lista3_excluir = document.createElement("li");
+    // let divTeste = document.createElement('div')
 
     // Seção 2' - Setando Atributos / Chamando Classes.
     inputCheckbox.setAttribute("type", "checkbox");
     inputCheckbox.classList.add("width");
-    editarListacomInput.placeholder =
-      "Ex: Fazer compras, estudar, ligar para alguém...";
+    editarListacomInput.placeholder = "Ex: Fazer compras, estudar...";
     editarListacomInput.style.display = "none";
     div.classList.add("icons__editarExcluir");
     imgConcluir.setAttribute("src", "/assets/confirmar.svg");
     imgConcluir.style.display = "none";
     imgEditar.setAttribute("src", "assets/editar_preto.png");
     imgExcluir.setAttribute("src", "/assets/excluir.svg");
+    li.classList.add("list__task");
+    li.style.height = "50px";
     p.textContent = tarefa.value;
+    // divTeste.classList.add("teste")
+    // divTeste.innerText = "Testando"
+
 
     // Seção 3' - Anexando Elementos dentro de algum Elemento em HTML.
     div.appendChild(imgEditar);
@@ -91,29 +104,66 @@ function criarElementos() {
     li.appendChild(editarListacomInput);
     li.appendChild(p);
     li.appendChild(div);
+    // li.appendChild(divTeste)
+    li.appendChild(alertaExcluir);
     listTask.appendChild(li);
-    li.classList.add("list__task");
+
+    alertaExcluir.appendChild(ul_div_excluir);
     tarefa.value = "";
     botao.style.backgroundColor = "";
     botao.style.color = "";
     document.getElementById("input-task").placeholder = "O que pretende fazer?";
 
-    function excluirListas() {
+    function mostrarExclusao() {
       // Função que faz a exclusão das listas ativas em HTML.
-      li.style.display = "none";
+      alertaExcluir.classList.add("ctn__removerLista");
+      setTimeout(() => {
+        alertaExcluir.style.maxWidth = "450px";
+      }, 100);
+      ul_div_excluir.classList.add("excluir_listas");
+      ul_div_excluir.appendChild(lista1_excluir);
+      ul_div_excluir.appendChild(lista2_excluir);
+      ul_div_excluir.appendChild(lista3_excluir);
+      lista1_excluir.textContent = "EXCLUIR\nESTE ITEM";
+      lista2_excluir.textContent = "SIM";
+      lista3_excluir.textContent = "NÃO";
     }
 
     imgExcluir.addEventListener("click", () => {
       // Evento que chama a função 'excluirListas' na linha '69'.
-      excluirListas();
+      mostrarExclusao();
+    });
+
+    function esconderExclusao() {
+      alertaExcluir.style.margin = "0";
+      alertaExcluir.style.height = "0px";
+      li.style.height = "0px";
+
+      setTimeout(() => {
+        li.style.display = "none";
+      }, 1000);
+    }
+
+    lista2_excluir.addEventListener("click", () => {
+      esconderExclusao();
     });
 
     function check() {
       // Função que Verifica se o Input Type: Checkout, está ativado ou desativado.
       if (inputCheckbox.checked) {
-        li.style.backgroundColor = "rgb(110, 203, 143)";
+        li.style.backgroundColor = "rgb(10, 203, 143)";
         li.style.color = "white";
         p.classList.add("decorationConcluido");
+        imgEditar.style.opacity = "0";
+        inputCheckbox.style.width = "0px";
+        imgEditar.style.display = "none";
+        editarListacomInput.style.display = "none";
+        p.style.display = "block";
+        inputCheckbox.style.display = "none";
+        setTimeout(() => {
+          p.style.width = "93%";
+          imgEditar.style.display = "none";
+        }, 1000);
       } else {
         li.style.backgroundColor = "";
         li.style.color = "";
@@ -132,18 +182,17 @@ function criarElementos() {
         imgConcluir.setAttribute("src", "");
         imgEditar.style.display = "none";
         editarListacomInput.style.display = "block";
-        editarListacomInput.value = "";
-        p.style.display = "none"
-        p.textContent = ""
-        return
+        editarListacomInput.value = p.textContent;
+        p.style.display = "none";
+        return;
       } else {
-        p.style.display = "block"
+        p.style.display = "block";
         editarListacomInput.style.display = "none";
         imgEditar.setAttribute("src", "assets/editar_preto.png");
         imgConcluir.setAttribute("src", "/assets/confirmar.svg");
         p.classList.remove("decorationConcluido");
         p.textContent = editarListacomInput.value;
-        return
+        return;
       }
     }
 
