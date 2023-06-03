@@ -89,6 +89,8 @@ function criarElementos() {
     imgConcluir.style.display = "none";
     imgEditar.setAttribute("src", "assets/editar_preto.png");
     imgExcluir.setAttribute("src", "/assets/excluir.svg");
+    imgExcluir.style.float = "right"
+    editarListacomInput.style.width = "424px"
     li.classList.add("list__task");
     li.style.height = "50px";
     p.textContent = tarefa.value;
@@ -161,7 +163,6 @@ function criarElementos() {
         p.style.display = "block";
         inputCheckbox.style.display = "none";
         setTimeout(() => {
-          p.style.width = "93%";
           imgEditar.style.display = "none";
         }, 1000);
       } else {

@@ -47,7 +47,7 @@ body {
     backdrop-filter: blur(10px);
     height: 50px;
     border-radius: 0px;
-    transition: all 1s ease-out;
+    transition: all 500ms ease;
 }
 
 .excluir_listas {
@@ -180,9 +180,11 @@ body {
 } */
 
 .icons__editarExcluir {
-    display: flex;
+    padding: 5px 0px;
+    float: right;
+    position: relative;
+    width: 51px;
     gap: 7px;
-    justify-content: space-between;
 }
 
 .width {
@@ -206,7 +208,6 @@ p {
     transition: all 1s;
     word-wrap: break-word;
     width: 80%;
-    padding: 10px;
 }
 
 
