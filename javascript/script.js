@@ -118,6 +118,11 @@ function criarElementos() {
       setTimeout(() => {
         alertaExcluir.style.maxWidth = "450px";
       }, 100);
+
+      setTimeout(() => {
+        ul_div_excluir.style.opacity = "1"
+      }, 300);
+
       ul_div_excluir.classList.add("excluir_listas");
       ul_div_excluir.appendChild(lista1_excluir);
       ul_div_excluir.appendChild(lista2_excluir);
@@ -133,12 +138,23 @@ function criarElementos() {
     });
 
     function esconderExclusao() {
+        li.style.display = "none";
+    }
+
+    function naoExcluir(){
+      setTimeout(() => {
+        ul_div_excluir.style.opacity = "0"
+      }, 100);
       alertaExcluir.style.maxWidth = "0px";
     }
 
-    lista3_excluir.addEventListener("click", () => {
+    lista2_excluir.addEventListener("click", () => {
       esconderExclusao();
     });
+
+    lista3_excluir.addEventListener('click', ()=>{
+      naoExcluir()
+    })
 
     // function check() {
     //   // Função que Verifica se o Input Type: Checkout, está ativado ou desativado.
