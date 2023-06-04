@@ -79,6 +79,7 @@ function criarElementos() {
     // let divTeste = document.createElement('div')
 
     // Seção 2' - Setando Atributos / Chamando Classes.
+    listTask.style.width = "100%";
     editarListacomInput.placeholder = "Ex: Fazer compras, estudar...";
     editarListacomInput.style.display = "none";
     div.classList.add("icons__editarExcluir");
@@ -86,23 +87,17 @@ function criarElementos() {
     imgConcluir.style.display = "none";
     imgEditar.setAttribute("src", "assets/editar_preto.png");
     imgExcluir.setAttribute("src", "/assets/excluir.svg");
-    // imgExcluir.style.float = "right"
-    editarListacomInput.style.width = "424px"
+    editarListacomInput.style.width = "424px";
     li.classList.add("list__task");
     p.textContent = tarefa.value;
-    // divTeste.classList.add("teste")
-    // divTeste.innerText = "Testando"
-
 
     // Seção 3' - Anexando Elementos dentro de algum Elemento em HTML.
     div.appendChild(imgEditar);
     div.appendChild(imgExcluir);
-    // li.appendChild(inputCheckbox);
     li.appendChild(imgConcluir);
     li.appendChild(editarListacomInput);
     li.appendChild(p);
     li.appendChild(div);
-    // li.appendChild(divTeste)
     li.appendChild(alertaExcluir);
     listTask.appendChild(li);
 
@@ -120,7 +115,7 @@ function criarElementos() {
       }, 100);
 
       setTimeout(() => {
-        ul_div_excluir.style.opacity = "1"
+        ul_div_excluir.style.opacity = "1";
       }, 300);
 
       ul_div_excluir.classList.add("excluir_listas");
@@ -138,12 +133,31 @@ function criarElementos() {
     });
 
     function esconderExclusao() {
-        li.style.display = "none";
+      setTimeout(() => {
+        alertaExcluir.style.maxWidth = "0px";
+      }, 100);
+
+      setTimeout(() => {
+        li.style.padding = "0px";
+        li.style.width = "0%";
+      }, 200);
+
+      if (
+        setTimeout(() => {
+          li.style.padding = "0px";
+          li.style.width = "0%";
+        }, 200)
+      ) {
+        setTimeout(() => {
+          li.remove();
+        }, 1000);
+      }
+
     }
 
-    function naoExcluir(){
+    function naoExcluir() {
       setTimeout(() => {
-        ul_div_excluir.style.opacity = "0"
+        ul_div_excluir.style.opacity = "0";
       }, 100);
       alertaExcluir.style.maxWidth = "0px";
     }
@@ -152,9 +166,9 @@ function criarElementos() {
       esconderExclusao();
     });
 
-    lista3_excluir.addEventListener('click', ()=>{
-      naoExcluir()
-    })
+    lista3_excluir.addEventListener("click", () => {
+      naoExcluir();
+    });
 
     // function check() {
     //   // Função que Verifica se o Input Type: Checkout, está ativado ou desativado.
@@ -184,7 +198,7 @@ function criarElementos() {
     function editarLista() {
       // Função permite editar o valor da lista chamando um Input.
       if (editarListacomInput.style.display == "none") {
-        editarListacomInput.style.padding = "0px 10px"
+        editarListacomInput.style.padding = "0px 10px";
         imgConcluir.setAttribute("src", "");
         imgEditar.style.display = "none";
         editarListacomInput.style.display = "block";
