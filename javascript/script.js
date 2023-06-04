@@ -184,6 +184,7 @@ function criarElementos() {
     function editarLista() {
       // Função permite editar o valor da lista chamando um Input.
       if (editarListacomInput.style.display == "none") {
+        editarListacomInput.style.padding = "0px 10px"
         imgConcluir.setAttribute("src", "");
         imgEditar.style.display = "none";
         editarListacomInput.style.display = "block";

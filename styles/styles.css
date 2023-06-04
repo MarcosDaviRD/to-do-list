@@ -201,7 +201,7 @@ img {
 }
 
 p {
-    padding: 5px 0px;
+    padding: 5px 5px;
     color: rgb(32, 32, 32);
     transition: all 1s;
     word-wrap: break-word;
@@ -223,6 +223,8 @@ input {
     cursor: pointer;
 }
 
-/* @media screen (max-width:   511){ */
-
-/* } */
+@media (max-width: 425px){ 
+    p {
+        padding: 5px 10px;
+    }
+ }
