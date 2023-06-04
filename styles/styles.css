@@ -156,16 +156,15 @@ body {
 }
 
 .list__task {
+    height: 50px;
     position: relative;
-    overflow: hidden;
-    height: 0px;
     background-color: rgb(221, 214, 214);
     display: flex;
+    justify-content: center;
     align-items: center;
-    justify-content: space-between;
     margin-bottom: 10px;
     border-radius: 5px;
-    padding: 0px 15px;
+    padding: 0px 5px;
     font-size: 14px;
     transition: all 1s;
 }
@@ -180,18 +179,16 @@ body {
 } */
 
 .icons__editarExcluir {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    background-color: yellowgreen;
+    margin: 0px 0px 0px 10px;
+    width: 70px;
     padding: 5px 0px;
-    float: right;
-    position: relative;
-    width: 51px;
-    gap: 7px;
+    transition: all 1s;
 }
 
-.width {
-    overflow: hidden;
-    transition: all 500ms;
-    width: 12px;
-}
 
 .decorationConcluido {
     color: white;
@@ -199,11 +196,13 @@ body {
 
 
 img {
-    transition: all 200ms;
+    margin: 0;
+    transition: all 1s;
     width: 22px;
 }
 
 p {
+    padding: 5px 0px;
     color: rgb(32, 32, 32);
     transition: all 1s;
     word-wrap: break-word;

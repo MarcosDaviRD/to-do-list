@@ -71,7 +71,6 @@ function criarElementos() {
     const imgExcluir = document.createElement("img");
     const div = document.createElement("div");
     const editarListacomInput = document.createElement("input");
-    const inputCheckbox = document.createElement("input");
     let alertaExcluir = document.createElement("div");
     let ul_div_excluir = document.createElement("ul");
     let lista1_excluir = document.createElement("li");
@@ -80,8 +79,6 @@ function criarElementos() {
     // let divTeste = document.createElement('div')
 
     // Seção 2' - Setando Atributos / Chamando Classes.
-    inputCheckbox.setAttribute("type", "checkbox");
-    inputCheckbox.classList.add("width");
     editarListacomInput.placeholder = "Ex: Fazer compras, estudar...";
     editarListacomInput.style.display = "none";
     div.classList.add("icons__editarExcluir");
@@ -89,10 +86,9 @@ function criarElementos() {
     imgConcluir.style.display = "none";
     imgEditar.setAttribute("src", "assets/editar_preto.png");
     imgExcluir.setAttribute("src", "/assets/excluir.svg");
-    imgExcluir.style.float = "right"
+    // imgExcluir.style.float = "right"
     editarListacomInput.style.width = "424px"
     li.classList.add("list__task");
-    li.style.height = "50px";
     p.textContent = tarefa.value;
     // divTeste.classList.add("teste")
     // divTeste.innerText = "Testando"
@@ -101,7 +97,7 @@ function criarElementos() {
     // Seção 3' - Anexando Elementos dentro de algum Elemento em HTML.
     div.appendChild(imgEditar);
     div.appendChild(imgExcluir);
-    li.appendChild(inputCheckbox);
+    // li.appendChild(inputCheckbox);
     li.appendChild(imgConcluir);
     li.appendChild(editarListacomInput);
     li.appendChild(p);
@@ -137,45 +133,37 @@ function criarElementos() {
     });
 
     function esconderExclusao() {
-      alertaExcluir.style.margin = "0";
-      alertaExcluir.style.height = "0px";
-      li.style.height = "0px";
-
-      setTimeout(() => {
-        li.style.display = "none";
-      }, 1000);
+      alertaExcluir.style.maxWidth = "0px";
     }
 
-    lista2_excluir.addEventListener("click", () => {
+    lista3_excluir.addEventListener("click", () => {
       esconderExclusao();
     });
 
-    function check() {
-      // Função que Verifica se o Input Type: Checkout, está ativado ou desativado.
-      if (inputCheckbox.checked) {
-        li.style.backgroundColor = "rgb(10, 203, 143)";
-        li.style.color = "white";
-        p.classList.add("decorationConcluido");
-        imgEditar.style.opacity = "0";
-        inputCheckbox.style.width = "0px";
-        imgEditar.style.display = "none";
-        editarListacomInput.style.display = "none";
-        p.style.display = "block";
-        inputCheckbox.style.display = "none";
-        setTimeout(() => {
-          imgEditar.style.display = "none";
-        }, 1000);
-      } else {
-        li.style.backgroundColor = "";
-        li.style.color = "";
-        p.classList.remove("decorationConcluido");
-      }
-    }
+    // function check() {
+    //   // Função que Verifica se o Input Type: Checkout, está ativado ou desativado.
+    //   if () {
+    //     li.style.backgroundColor = "rgb(10, 203, 143)";
+    //     li.style.color = "white";
+    //     p.classList.add("decorationConcluido");
+    //     imgEditar.style.opacity = "0";
+    //     imgEditar.style.display = "none";
+    //     editarListacomInput.style.display = "none";
+    //     p.style.display = "block";
+    //     setTimeout(() => {
+    //       imgEditar.style.display = "none";
+    //     }, 1000);
+    //   } else {
+    //     li.style.backgroundColor = "";
+    //     li.style.color = "";
+    //     p.classList.remove("decorationConcluido");
+    //   }
+    // }
 
-    inputCheckbox.addEventListener("click", () => {
-      //  Evento de Clique que inicia a 'Função Check'.
-      check();
-    });
+    // inputCheckbox.addEventListener("click", () => {
+    //   //  Evento de Clique que inicia a 'Função Check'.
+    //   check();
+    // });
 
     function editarLista() {
       // Função permite editar o valor da lista chamando um Input.
@@ -202,7 +190,7 @@ function criarElementos() {
       pegarValor = editarListacomInput.value;
       if (pegarValor.length > 0) {
         imgEditar.setAttribute("src", "/assets/confirmar.svg");
-        imgEditar.style.display = "block";
+        imgEditar.style.display = "inline-block";
       } else {
         imgEditar.style.display = "none";
       }
